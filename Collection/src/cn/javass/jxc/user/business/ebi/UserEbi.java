@@ -14,6 +14,9 @@ public interface UserEbi {
 	 * 2、查看下uuid是否重复
 	 * 2.1若重复，返回false
 	 * 2.2若不重复，则添加到usermode的list并返回true
+	 * 
+	 * 在Panel上来的时候，不需要写uuid，可以自动生成UUID
+	 * 
 	 * @param user
 	 * @return
 	 */
