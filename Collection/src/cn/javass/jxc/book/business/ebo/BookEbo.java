@@ -5,20 +5,20 @@ import java.util.Collection;
 import cn.javass.jxc.book.business.ebi.BookEbi;
 import cn.javass.jxc.book.dao.dao.BookDAO;
 import cn.javass.jxc.book.dao.factory.BookDAOFactory;
-import cn.javass.jxc.user.vo.BookModel;
-import cn.javass.jxc.user.vo.BookQueryModel;
+import cn.javass.jxc.user.vo.UserModel;
+import cn.javass.jxc.user.vo.UserQueryModel;
 
 public class BookEbo implements BookEbi {
 
 	private static BookDAO dao= BookDAOFactory.getBookDAO();
 	@Override
-	public boolean create(BookModel book) {
+	public boolean create(UserModel book) {
 		// TODO Auto-generated method stub
 		return dao.create(book);
 	}
 
 	@Override
-	public boolean update(BookModel book) {
+	public boolean update(UserModel book) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -30,19 +30,19 @@ public class BookEbo implements BookEbi {
 	}
 
 	@Override
-	public BookModel getByUuid(String uuid) {
+	public UserModel getByUuid(String uuid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Collection<BookModel> getByAll() {
+	public Collection<UserModel> getByAll() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Collection<BookModel> getByCondition(BookQueryModel book) {
+	public Collection<UserModel> getByCondition(UserQueryModel book) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -19,7 +19,7 @@ import cn.javass.jxc.user.UserTypeEnum;
 import cn.javass.jxc.user.UuidEnum;
 import cn.javass.jxc.user.business.ebi.UserEbi;
 import cn.javass.jxc.user.business.factory.UserEbiFactory;
-import cn.javass.jxc.user.vo.BookModel;
+import cn.javass.jxc.user.vo.UserModel;
 
 public class AddPanel extends JPanel {
 	private JTextField txtName;
@@ -33,7 +33,7 @@ public class AddPanel extends JPanel {
 	 */
 	public void Add(){
 		
-		BookModel model=new BookModel();
+		UserModel model=new UserModel();
 		UuidModel uuid=new UuidModel();
 		//使用离散值enum枚举，对一个类 只限定生成特定几个的实例，重新实现uuid自动生产
 		uuid.setModelName(UuidEnum.USER_UUID.toString());

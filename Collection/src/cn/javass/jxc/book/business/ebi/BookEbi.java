@@ -2,8 +2,8 @@ package cn.javass.jxc.book.business.ebi;
 
 import java.util.Collection;
 
-import cn.javass.jxc.user.vo.BookModel;
-import cn.javass.jxc.user.vo.BookQueryModel;
+import cn.javass.jxc.user.vo.UserModel;
+import cn.javass.jxc.user.vo.UserQueryModel;
 
 
 
@@ -22,7 +22,7 @@ public interface BookEbi {
 	 * @param user
 	 * @return
 	 */
-	public boolean create(BookModel user);
+	public boolean create(UserModel user);
 
 	/**
 	 * 修改一个uuid，如果不存在，返回false
@@ -32,7 +32,7 @@ public interface BookEbi {
 	 * @param user
 	 * @return
 	 */
-	public boolean update(BookModel user);
+	public boolean update(UserModel user);
 
 	/**
 	 * 删除一个 如果不存在，返回false
@@ -54,14 +54,14 @@ public interface BookEbi {
 	 * @param uuid
 	 * @return
 	 */
-	public BookModel getByUuid(String uuid);
+	public UserModel getByUuid(String uuid);
 
 	/**
 	 * 查询所有
 	 * 
 	 * @return
 	 */
-	public Collection<BookModel> getByAll();
+	public Collection<UserModel> getByAll();
 
 	/**
 	 * 按条件查找符合的对象集合
@@ -69,5 +69,5 @@ public interface BookEbi {
 	 * @param user
 	 * @return
 	 */
-	public Collection<BookModel> getByCondition(BookQueryModel user);
+	public Collection<UserModel> getByCondition(UserQueryModel user);
 }

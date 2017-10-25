@@ -6,8 +6,8 @@ import java.util.List;
 
 import cn.javass.framework.io.SerialUtil;
 import cn.javass.jxc.user.dao.dao.UserDAO;
-import cn.javass.jxc.user.vo.BookModel;
-import cn.javass.jxc.user.vo.BookQueryModel;
+import cn.javass.jxc.user.vo.UserModel;
+import cn.javass.jxc.user.vo.UserQueryModel;
 
 /**
  * 用序列化/反序列化的方式，如何添加 序列号/反序列化，相当于可以把对象放到文件中，把对象从文件中读出来 对于create
@@ -21,13 +21,13 @@ public class UserDAOImpl implements UserDAO {
 	private final static String FILE_NAME = "User.txt";
 
 	@Override
-	public boolean create(BookModel user) {
+	public boolean create(UserModel user) {
 		// TODO Auto-generated method stub
 		// 1、想把已经有的读出出来
-		List<BookModel> list = SerialUtil.readFromFile(FILE_NAME);
+		List<UserModel> list = SerialUtil.readFromFile(FILE_NAME);
 
 		// 2、查看下uuid是否重复
-		for (BookModel model : list) {
+		for (UserModel model : list) {
 			if (model.getUuid().equals(user.getUuid())) {
 				return false;
 			}
@@ -43,12 +43,12 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public boolean update(BookModel user) {
+	public boolean update(UserModel user) {
 		// TODO Auto-generated method stub
 		// 修改一个uuid，如果不存在，返回false
 		// 1、获取list，遍历list 判断uuid是否存在
-		List<BookModel> list = SerialUtil.readFromFile(FILE_NAME);
-		for (BookModel model : list) {
+		List<UserModel> list = SerialUtil.readFromFile(FILE_NAME);
+		for (UserModel model : list) {
 			if (model.getUuid().equals(user.getUuid())) {
 				// 修改
 				model.setName(user.getName());
@@ -69,8 +69,8 @@ public class UserDAOImpl implements UserDAO {
 	public boolean delete(String uuid) {
 		// TODO Auto-generated method stub
 		// 1 先把原来的全部读取出来
-		List<BookModel> list = SerialUtil.readFromFile(FILE_NAME);
-		for (BookModel model : list) {
+		List<UserModel> list = SerialUtil.readFromFile(FILE_NAME);
+		for (UserModel model : list) {
 			if (model.getUuid().equals(uuid)) {
 				// 删除list元素
 				list.remove(model);
@@ -86,11 +86,11 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public BookModel getByUuid(String uuid) {
+	public UserModel getByUuid(String uuid) {
 		// TODO Auto-generated method stub
 		// 1、查询所有的list，判断uuid是否存在
-		List<BookModel> list = SerialUtil.readFromFile(FILE_NAME);
-		for (BookModel model : list) {
+		List<UserModel> list = SerialUtil.readFromFile(FILE_NAME);
+		for (UserModel model : list) {
 			if (model.getUuid().equals(uuid)) {
 				return model;
 			}
@@ -101,20 +101,20 @@ public class UserDAOImpl implements UserDAO {
 	}
 
 	@Override
-	public Collection<BookModel> getByAll() {
+	public Collection<UserModel> getByAll() {
 		// TODO Auto-generated method stub
 		return SerialUtil.readFromFile(FILE_NAME);
 	}
 
 	@Override
-	public Collection<BookModel> getByCondition(BookQueryModel user) {
+	public Collection<UserModel> getByCondition(UserQueryModel user) {
 		// TODO Auto-generated method stub
 		// 1、循环所有对象
-		List<BookModel> list = SerialUtil.readFromFile(FILE_NAME);
-		List<BookModel> queryResult = new ArrayList<BookModel>();
+		List<UserModel> list = SerialUtil.readFromFile(FILE_NAME);
+		List<UserModel> queryResult = new ArrayList<UserModel>();
 		// 2、把符合条件的model加入list
 		System.out.println("------"+list);
-		for (BookModel model : list) {
+		for (UserModel model : list) {
 			// 正逻辑
 			if(user.getType()>0){
 				if (user.getType() == model.getType()) {
@@ -139,7 +139,7 @@ public class UserDAOImpl implements UserDAO {
 	public static void main(String[] args) {
 		UserDAO userdao = new UserDAOImpl();
 		// UserModel user=new UserModel();
-		BookQueryModel query = new BookQueryModel();
+		UserQueryModel query = new UserQueryModel();
 		query.setUuid("");
 		query.setName("");
 		query.setType(4);

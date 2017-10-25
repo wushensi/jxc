@@ -15,8 +15,8 @@ import cn.javass.framework.panel.PanelUtil;
 import cn.javass.jxc.user.UserTypeEnum;
 import cn.javass.jxc.user.business.ebi.UserEbi;
 import cn.javass.jxc.user.business.factory.UserEbiFactory;
-import cn.javass.jxc.user.vo.BookModel;
-import cn.javass.jxc.user.vo.BookQueryModel;
+import cn.javass.jxc.user.vo.UserModel;
+import cn.javass.jxc.user.vo.UserQueryModel;
 
 public class QueryPanel extends JPanel {
 	
@@ -37,12 +37,12 @@ public class QueryPanel extends JPanel {
 	 */
 	public void Query(){
 		UserEbi userEbi=UserEbiFactory.getUserEbi();
-		BookQueryModel queryModel=new BookQueryModel();
-		List<BookModel> list=null;
+		UserQueryModel queryModel=new UserQueryModel();
+		List<UserModel> list=null;
 		queryModel.setUuid(txtUuid.getText());
 		queryModel.setName(txtName.getText());
 		queryModel.setType(type.getSelectedIndex());
-		list=(List<BookModel>) userEbi.getByCondition(queryModel);
+		list=(List<UserModel>) userEbi.getByCondition(queryModel);
 		//System.out.println("query list"+list);
 		PanelUtil.changePanel(jframe, new ListPanel(jframe,list));
 		Back();

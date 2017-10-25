@@ -15,7 +15,7 @@ import cn.javass.framework.panel.PanelUtil;
 import cn.javass.jxc.user.UserTypeEnum;
 import cn.javass.jxc.user.business.ebi.UserEbi;
 import cn.javass.jxc.user.business.factory.UserEbiFactory;
-import cn.javass.jxc.user.vo.BookModel;
+import cn.javass.jxc.user.vo.UserModel;
 
 public class UpdatePanel extends JPanel {
 	public UpdatePanel() {
@@ -36,7 +36,7 @@ public class UpdatePanel extends JPanel {
 	 * Update the panel.
 	 */
 	public void Update(){
-		BookModel model=new BookModel();
+		UserModel model=new UserModel();
 		model.setUuid(txtUuid.getText());
 		model.setName(txtName.getText());
 		model.setPwd(txtPwd.getText());
@@ -114,7 +114,7 @@ public class UpdatePanel extends JPanel {
 		//uuid=txtUuid;
 		
 		UserEbi userEbi=UserEbiFactory.getUserEbi();
-		BookModel model=userEbi.getByUuid(uuid);
+		UserModel model=userEbi.getByUuid(uuid);
 		
 		txtUuid.setText(model.getUuid());
 		txtUuid.setEditable(false);

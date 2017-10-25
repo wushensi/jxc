@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import cn.javass.framework.panel.PanelUtil;
 import cn.javass.jxc.user.business.ebo.UserEbo;
 import cn.javass.jxc.user.business.factory.UserEbiFactory;
-import cn.javass.jxc.user.vo.BookModel;
+import cn.javass.jxc.user.vo.UserModel;
 
 public class BookListPanel extends JPanel {
 
@@ -23,7 +23,7 @@ public class BookListPanel extends JPanel {
 	 * Create the panel.
 	 */
 	private JFrame frame;
-	private static List<BookModel> list;
+	private static List<UserModel> list;
 	
 	private JList jlist;
 	public BookListPanel(){
@@ -51,13 +51,13 @@ public class BookListPanel extends JPanel {
 		this.init(list);
 	}
 	
-	public BookListPanel(JFrame frame,List<BookModel> list) {
+	public BookListPanel(JFrame frame,List<UserModel> list) {
 		this.frame=frame;
 		this.list=list;
 		this.init(list);
 	}
 	
-	public void init(List<BookModel> dataList){
+	public void init(List<UserModel> dataList){
 		this.setSize(800, 600);
 		setLayout(null);
 		JLabel label = new JLabel("\u56FE\u4E66\u5217\u8868");
@@ -76,8 +76,8 @@ public class BookListPanel extends JPanel {
 		JButton btnUpdate = new JButton("\u66F4\u65B0\u56FE\u4E66");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BookModel model=new BookModel();
-				model=(BookModel)jlist.getSelectedValue();
+				UserModel model=new UserModel();
+				model=(UserModel)jlist.getSelectedValue();
 				if(model!=null){
 					Update(model.getUuid());
 				}else{
@@ -106,8 +106,8 @@ public class BookListPanel extends JPanel {
 		JButton btnDel = new JButton("\u5220   \u9664");
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				BookModel model=new BookModel();
-				model=(BookModel)jlist.getSelectedValue();
+				UserModel model=new UserModel();
+				model=(UserModel)jlist.getSelectedValue();
 				if(model!=null){
 					Delete(model.getUuid());
 				}else{
