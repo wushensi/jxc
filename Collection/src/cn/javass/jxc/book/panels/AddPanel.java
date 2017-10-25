@@ -7,19 +7,20 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import cn.javass.framework.panel.PanelUtil;
+import cn.javass.jxc.book.business.ebi.BookEbi;
+import cn.javass.jxc.book.business.factory.BookEbiFactory;
+import cn.javass.jxc.book.vo.BookModel;
 import cn.javass.jxc.common.dao.dao.UuidDAO;
 import cn.javass.jxc.common.dao.factory.UuidDAOFactory;
 import cn.javass.jxc.common.vo.UuidModel;
 import cn.javass.jxc.user.UserTypeEnum;
 import cn.javass.jxc.user.UuidEnum;
-import cn.javass.jxc.user.business.ebi.UserEbi;
-import cn.javass.jxc.user.business.factory.UserEbiFactory;
-import cn.javass.jxc.user.vo.BookModel;
+
+
 
 public class AddPanel extends JPanel {
 	private JTextField txtName;
@@ -36,25 +37,17 @@ public class AddPanel extends JPanel {
 		BookModel model=new BookModel();
 		UuidModel uuid=new UuidModel();
 		//使用离散值enum枚举，对一个类 只限定生成特定几个的实例，重新实现uuid自动生产
-		uuid.setModelName(UuidEnum.USER_UUID.toString());
+		uuid.setModelName(UuidEnum.BOOK_UUID.toString());
 		UuidDAO uuidDao=UuidDAOFactory.getUuidDAO();
 		model.setUuid(uuidDao.getNextNum(uuid.getModelName()));
-		model.setName(name.getText());
-		model.setPwd(pwd.getText());
-		model.setType(UserTypeEnum.getUserName(((String)type.getSelectedItem())));
-		UserEbi userebi=UserEbiFactory.getUserEbi();
-		if(!(pwd.getText().equals(checkpwd.getText()))){
-			JOptionPane.showMessageDialog(null, "密码错误，请重新输入");
-		}else if(!(userebi.create(model))){
-			JOptionPane.showMessageDialog(null, "对不起，用户已存在，请重新输入");
-		}
+		model.setName(txtName.getText());
+		model.setInPrice(Double.parseDouble(txtInPrice.getText()));
+		model.setSalePrice(Double.parseDouble(txtSalePrice.getText()));
+		BookEbi bookEbi=BookEbiFactory.getBookEbi();
+		bookEbi.create(model);
 		Back();
 	}
 	public void Back(){
-		//System.out.println(jframe);
-		/*jframe.getContentPane().removeAll();
-		jframe.getContentPane().add(new ListPanel(jframe));
-		jframe.getContentPane().validate();*/
 		PanelUtil.changePanel(jframe, new BookListPanel(jframe));
 	}
 	public void init(){

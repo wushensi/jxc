@@ -37,7 +37,7 @@ public interface BookDAO {
 	 * @param user
 	 * @return
 	 */
-	public boolean delete(String book);
+	public boolean delete(String uuid);
 
 	/**
 	 * 根据主键返回一个
@@ -48,7 +48,7 @@ public interface BookDAO {
 	 * @param uuid
 	 * @return
 	 */
-	public BookModel getByUuid(String book);
+	public BookModel getByUuid(String uuid);
 
 	/**
 	 * 查询所有
@@ -63,5 +63,5 @@ public interface BookDAO {
 	 * @param user
 	 * @return
 	 */
-	public Collection<BookModel> getByCondition(BookQueryModel user);
+	public Collection<BookModel> getByCondition(BookQueryModel bookQueryModel);
 }

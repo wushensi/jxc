@@ -110,7 +110,7 @@ public class BookDAOImpl implements BookDAO {
 	}
 
 	@Override
-	public Collection<BookModel> getByCondition(BookQueryModel book) {
+	public Collection<BookModel> getByCondition(BookQueryModel bookQueryModel) {
 		// TODO Auto-generated method stub
 		// 1、循环所有对象
 		
@@ -139,6 +139,7 @@ public class BookDAOImpl implements BookDAO {
 		//System.out.println(dao.create(book));
 		//dao.update(book);
 		//dao.delete("BOOK_UUID");
+		//System.out.println(dao.delete("1"));
 		System.out.println(dao.getByAll());
 		
 		//System.out.println("------"+userdao.getByCondition(query));

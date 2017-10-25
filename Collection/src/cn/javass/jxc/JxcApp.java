@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 
 import cn.javass.jxc.book.panels.BookListPanel;
 
+
+
 /**
  * 在初始化jList时发现问题
  * 1、明文密码

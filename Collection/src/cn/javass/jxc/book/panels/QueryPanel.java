@@ -12,11 +12,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import cn.javass.framework.panel.PanelUtil;
+import cn.javass.jxc.book.business.factory.BookEbiFactory;
+import cn.javass.jxc.book.vo.BookModel;
+import cn.javass.jxc.book.vo.BookQueryModel;
 import cn.javass.jxc.user.UserTypeEnum;
 import cn.javass.jxc.user.business.ebi.UserEbi;
 import cn.javass.jxc.user.business.factory.UserEbiFactory;
-import cn.javass.jxc.user.vo.BookModel;
-import cn.javass.jxc.user.vo.BookQueryModel;
+
 
 public class QueryPanel extends JPanel {
 	
@@ -35,8 +37,8 @@ public class QueryPanel extends JPanel {
 	/**
 	 *  Delete the panel.
 	 */
-	public void Query(){
-		UserEbi userEbi=UserEbiFactory.getUserEbi();
+	/*public void Query(){
+		BookEbi bookEbi=BookEbiFactory.getBookEbi();
 		BookQueryModel queryModel=new BookQueryModel();
 		List<BookModel> list=null;
 		queryModel.setUuid(txtUuid.getText());
@@ -46,7 +48,7 @@ public class QueryPanel extends JPanel {
 		//System.out.println("query list"+list);
 		PanelUtil.changePanel(jframe, new BookListPanel(jframe,list));
 		Back();
-	}
+	}*/
 	/**
 	 * Back the ListPanel
 	 */
@@ -60,7 +62,7 @@ public class QueryPanel extends JPanel {
 		JButton btnDelete = new JButton("\u67E5   \u627E");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Query();
+				//Query();
 			}
 		});
 		btnDelete.setBounds(36, 242, 89, 23);
@@ -79,25 +81,14 @@ public class QueryPanel extends JPanel {
 		lblNewLabel.setBounds(36, 69, 46, 14);
 		add(lblNewLabel);
 		
-		JLabel label = new JLabel("\u7528\u6237\u7C7B\u578B");
-		label.setBounds(36, 105, 46, 14);
-		add(label);
-		
 		txtName = new JTextField();
 		txtName.setBounds(132, 66, 86, 20);
 		add(txtName);
 		txtName.setColumns(10);
 		
-		JComboBox userType = new JComboBox();
-		userType.setBounds(132, 102, 100, 20);
-		userType.addItem("ÇëÑ¡Ôñ½ÇÉ«");
-		
-		for(UserTypeEnum enum1:UserTypeEnum.values()){
+		/*for(UserTypeEnum enum1:UserTypeEnum.values()){
 			userType.addItem(enum1.getName());
-		}
-
-		add(userType);
-		type=userType;
+		}*/
 		
 		JLabel lblUuid = new JLabel("Uuid");
 		lblUuid.setBounds(36, 30, 46, 14);

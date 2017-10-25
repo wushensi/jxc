@@ -12,23 +12,27 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import cn.javass.framework.panel.PanelUtil;
+import cn.javass.jxc.book.business.ebi.BookEbi;
+import cn.javass.jxc.book.business.factory.BookEbiFactory;
+import cn.javass.jxc.book.vo.BookModel;
 import cn.javass.jxc.user.UserTypeEnum;
 import cn.javass.jxc.user.business.ebi.UserEbi;
 import cn.javass.jxc.user.business.factory.UserEbiFactory;
-import cn.javass.jxc.user.vo.BookModel;
 
 public class DeletePanel extends JPanel {
 	
 	private JTextField txtName;
 	private JFrame jframe;
 	private JTextField txtUuid;
-	private static JComboBox type;
 	private static String uuid;
+	private JTextField txtInPrice;
+	private JTextField txtSalePrice;
 	public DeletePanel() {
 		this.init();
 	}
 	public DeletePanel(JFrame jframe,String uuid) {
 		this.uuid=uuid;
+		System.out.println("book uuid---"+uuid);
 		this.jframe=jframe;
 		this.init();
 	}
@@ -37,9 +41,9 @@ public class DeletePanel extends JPanel {
 	 */
 	public void Delete(){
 		//获取Dao
-		UserEbi userEbi=UserEbiFactory.getUserEbi();
+		BookEbi bookEbi=BookEbiFactory.getBookEbi();
 		//删除记录,并判断返回值
-		if(!userEbi.delete(uuid)){
+		if(!bookEbi.delete(uuid)){
 			JOptionPane.showMessageDialog(null, "对不起，用户不存在，删除失败");
 		}
 		
@@ -81,7 +85,7 @@ public class DeletePanel extends JPanel {
 		lblNewLabel.setBounds(36, 69, 46, 14);
 		add(lblNewLabel);
 		
-		JLabel label = new JLabel("\u7528\u6237\u7C7B\u578B");
+		JLabel label = new JLabel("\u8FDB\u8D27\u4EF7\u683C");
 		label.setBounds(36, 105, 46, 14);
 		add(label);
 		
@@ -89,12 +93,6 @@ public class DeletePanel extends JPanel {
 		txtName.setBounds(92, 66, 86, 20);
 		add(txtName);
 		txtName.setColumns(10);
-		
-		JComboBox userType = new JComboBox();
-		userType.setBounds(92, 102, 100, 20);
-
-		add(userType);
-		type=userType;
 		
 		JLabel lblUuid = new JLabel("Uuid");
 		lblUuid.setBounds(36, 30, 46, 14);
@@ -105,17 +103,31 @@ public class DeletePanel extends JPanel {
 		txtUuid.setBounds(92, 27, 86, 20);
 		add(txtUuid);
 		
-		UserEbi userEbi=UserEbiFactory.getUserEbi();
-		BookModel model=userEbi.getByUuid(uuid);
+		JLabel label_1 = new JLabel("\u9500\u552E\u4EF7\u683C");
+		label_1.setBounds(36, 143, 46, 14);
+		add(label_1);
+		
+		txtInPrice = new JTextField();
+		txtInPrice.setBounds(92, 102, 86, 20);
+		add(txtInPrice);
+		txtInPrice.setColumns(10);
+		
+		txtSalePrice = new JTextField();
+		txtSalePrice.setColumns(10);
+		txtSalePrice.setBounds(92, 140, 86, 20);
+		add(txtSalePrice);
+		
+		BookEbi bookEbi=BookEbiFactory.getBookEbi();
+		BookModel model=bookEbi.getByUuid(uuid);
 		
 		txtUuid.setText(model.getUuid());
 		txtUuid.setEditable(false);
 		txtName.setText(model.getName());
 		txtName.setEditable(false);
-		
-		userType.addItem(UserTypeEnum.getUserType(model.getType()));
+		txtInPrice.setText(String.valueOf(model.getInPrice()));
+		txtInPrice.setEditable(false);
+		txtSalePrice.setText(String.valueOf(model.getSalePrice()));
+		txtSalePrice.setEditable(false);
 		
 	}
-	
-	
 }

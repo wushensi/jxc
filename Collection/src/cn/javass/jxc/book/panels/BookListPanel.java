@@ -35,7 +35,7 @@ public class BookListPanel extends JPanel {
 	}
 	
 	public void Update(String uuid){
-		
+		PanelUtil.changePanel(frame, new UpdatePanel(frame,uuid));
 	}
 	
 	public void Delete(String uuid){

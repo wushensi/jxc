@@ -23,7 +23,7 @@ public interface BookEbi {
 	 * @param user
 	 * @return
 	 */
-	public boolean create(BookModel user);
+	public boolean create(BookModel book);
 
 	/**
 	 * 修改一个uuid，如果不存在，返回false
@@ -33,7 +33,7 @@ public interface BookEbi {
 	 * @param user
 	 * @return
 	 */
-	public boolean update(BookModel user);
+	public boolean update(BookModel book);
 
 	/**
 	 * 删除一个 如果不存在，返回false
@@ -71,6 +71,4 @@ public interface BookEbi {
 	 * @return
 	 */
 	public Collection<BookModel> getByCondition(BookQueryModel book);
-
-	boolean update(cn.javass.jxc.book.vo.BookModel book);
 }

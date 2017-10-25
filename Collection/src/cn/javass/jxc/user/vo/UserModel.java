@@ -2,6 +2,7 @@ package cn.javass.jxc.user.vo;
 
 import java.io.Serializable;
 
+import cn.javass.jxc.book.vo.BookModel;
 import cn.javass.jxc.user.UserTypeEnum;
 
 /**
@@ -27,6 +28,8 @@ public class UserModel implements Serializable{
 	public String toString() {
 		return uuid + ", " + name + ", " + UserTypeEnum.getUserType(type);
 	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -34,6 +37,8 @@ public class UserModel implements Serializable{
 		result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
 		return result;
 	}
+
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -42,7 +47,7 @@ public class UserModel implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BookModel other = (BookModel) obj;
+		UserModel other = (UserModel) obj;
 		if (uuid == null) {
 			if (other.uuid != null)
 				return false;
@@ -50,6 +55,8 @@ public class UserModel implements Serializable{
 			return false;
 		return true;
 	}
+
+
 	public String getUuid() {
 		return uuid;
 	}
