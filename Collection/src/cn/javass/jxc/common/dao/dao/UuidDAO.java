@@ -12,5 +12,5 @@ package cn.javass.jxc.common.dao.dao;
  *
  */
 public interface UuidDAO {
-	public int getNextNum(String modelName);
+	public String getNextNum(String modelName);
 }

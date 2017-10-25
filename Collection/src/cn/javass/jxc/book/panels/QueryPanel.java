@@ -1,4 +1,4 @@
-package cn.javass.jxc.user.panels;
+package cn.javass.jxc.book.panels;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

@@ -1,4 +1,4 @@
-package cn.javass.jxc.user.panels;
+package cn.javass.jxc.book.panels;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,7 +38,7 @@ public class ListPanel extends JPanel {
 	}
 	
 	public void Update(String uuid){
-		PanelUtil.changePanel(frame, new UpdatePanel(frame,uuid));
+		//PanelUtil.changePanel(frame, new UpdatePanel(frame,uuid));
 	}
 	
 	public void Delete(String uuid){
@@ -63,11 +63,11 @@ public class ListPanel extends JPanel {
 	public void init(List<UserModel> dataList){
 		this.setSize(800, 600);
 		setLayout(null);
-		JLabel label = new JLabel("\u7528\u6237\u5217\u8868");
+		JLabel label = new JLabel("\u56FE\u4E66\u5217\u8868");
 		label.setBounds(10, 31, 107, 14);
 		add(label);
 		
-		JButton btnAdd = new JButton("\u6DFB\u52A0\u7528\u6237");
+		JButton btnAdd = new JButton("\u6DFB\u52A0\u56FE\u4E66");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Add();
@@ -76,7 +76,7 @@ public class ListPanel extends JPanel {
 		btnAdd.setBounds(10, 181, 89, 23);
 		add(btnAdd);
 		
-		JButton btnUpdate = new JButton("\u66F4\u65B0\u7528\u6237");
+		JButton btnUpdate = new JButton("\u66F4\u65B0\u56FE\u4E66");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UserModel model=new UserModel();
@@ -121,7 +121,7 @@ public class ListPanel extends JPanel {
 		btnDel.setBounds(244, 181, 89, 23);
 		add(btnDel);
 		
-		JButton btnQuery = new JButton("\u67E5\u8BE2\u7528\u6237");
+		JButton btnQuery = new JButton("\u67E5\u8BE2\u56FE\u4E66");
 		btnQuery.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Query();

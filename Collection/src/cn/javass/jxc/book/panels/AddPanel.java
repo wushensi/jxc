@@ -1,4 +1,4 @@
-package cn.javass.jxc.user.panels;
+package cn.javass.jxc.book.panels;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,8 +23,8 @@ import cn.javass.jxc.user.vo.UserModel;
 
 public class AddPanel extends JPanel {
 	private JTextField txtName;
-	private JTextField txtPwd;
-	private JTextField txtCheckPwd;
+	private JTextField txtInPrice;
+	private JTextField txtSalePrice;
 	private JFrame jframe;
 	private static JTextField name,pwd,checkpwd;
 	private static JComboBox type;
@@ -79,20 +79,16 @@ public class AddPanel extends JPanel {
 		btnBack.setBounds(237, 242, 89, 23);
 		add(btnBack);
 		
-		JLabel lblNewLabel = new JLabel("\u59D3 \u540D");
+		JLabel lblNewLabel = new JLabel("\u4E66 \u540D");
 		lblNewLabel.setBounds(36, 69, 46, 14);
 		add(lblNewLabel);
 		
-		JLabel label = new JLabel("\u7528\u6237\u7C7B\u578B");
-		label.setBounds(36, 105, 46, 14);
-		add(label);
-		
-		JLabel label_1 = new JLabel("\u5BC6\u7801");
-		label_1.setBounds(36, 145, 46, 14);
+		JLabel label_1 = new JLabel("\u8FDB\u8D27\u4EF7\u683C");
+		label_1.setBounds(36, 106, 46, 14);
 		add(label_1);
 		
-		JLabel label_2 = new JLabel("\u786E\u8BA4\u5BC6\u7801");
-		label_2.setBounds(36, 188, 46, 14);
+		JLabel label_2 = new JLabel("\u9500\u552E\u4EF7\u683C");
+		label_2.setBounds(36, 145, 46, 14);
 		add(label_2);
 		
 		txtName = new JTextField();
@@ -102,26 +98,19 @@ public class AddPanel extends JPanel {
 		name=txtName;
 		
 		
-		txtPwd = new JTextField();
-		txtPwd.setColumns(10);
-		txtPwd.setBounds(92, 142, 86, 20);
-		add(txtPwd);
-		pwd=txtPwd;
+		txtInPrice = new JTextField();
+		txtInPrice.setColumns(10);
+		txtInPrice.setBounds(92, 106, 86, 20);
+		add(txtInPrice);
+		pwd=txtInPrice;
 		
 		
-		txtCheckPwd = new JTextField();
-		txtCheckPwd.setColumns(10);
-		txtCheckPwd.setBounds(92, 185, 86, 20);
-		add(txtCheckPwd);
-		checkpwd=txtCheckPwd;
+		txtSalePrice = new JTextField();
+		txtSalePrice.setColumns(10);
+		txtSalePrice.setBounds(92, 142, 86, 20);
+		add(txtSalePrice);
+		checkpwd=txtSalePrice;
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(92, 102, 100, 20);
-		for(UserTypeEnum enum1:UserTypeEnum.values()){
-			comboBox.addItem(enum1.getName());
-		}
-		add(comboBox);
-		type=comboBox;
 		
 	}
 	public AddPanel(JFrame jframe) {

@@ -34,7 +34,7 @@ public class SerialUtil {
 		if (file.exists()) {
 			ObjectInputStream input = null;
 			try {
-				input = new ObjectInputStream(new FileInputStream("User.txt"));
+				input = new ObjectInputStream(new FileInputStream(fileName));
 				list = (List) input.readObject();
 
 			} catch (FileNotFoundException e) {
