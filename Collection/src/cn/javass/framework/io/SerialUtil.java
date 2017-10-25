@@ -10,7 +10,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.javass.jxc.user.vo.UserModel;
+import cn.javass.jxc.user.vo.BookModel;
 
 /**
  * 

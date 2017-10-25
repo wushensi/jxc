@@ -1,11 +1,13 @@
-package cn.javass.jxc.user.business.ebi;
+package cn.javass.jxc.book.business.ebi;
 
 import java.util.Collection;
 
 import cn.javass.jxc.user.vo.BookModel;
 import cn.javass.jxc.user.vo.BookQueryModel;
 
-public interface UserEbi {
+
+
+public interface BookEbi {
 
 	/**
 	 * Ìí¼ÓÒ»¸ö<br>

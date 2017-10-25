@@ -15,30 +15,27 @@ import javax.swing.JScrollPane;
 import cn.javass.framework.panel.PanelUtil;
 import cn.javass.jxc.user.business.ebo.UserEbo;
 import cn.javass.jxc.user.business.factory.UserEbiFactory;
-import cn.javass.jxc.user.vo.UserModel;
+import cn.javass.jxc.user.vo.BookModel;
 
-public class ListPanel extends JPanel {
+public class BookListPanel extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
 	private JFrame frame;
-	private static List<UserModel> list;
+	private static List<BookModel> list;
 	
 	private JList jlist;
-	public ListPanel(){
+	public BookListPanel(){
 		this.init(list);
 	}
 	
 	public void Add(){
-		/*frame.getContentPane().removeAll();
-		frame.getContentPane().add(new AddPanel(frame));
-		frame.getContentPane().validate();*/
 		PanelUtil.changePanel(frame, new AddPanel(frame));
 	}
 	
 	public void Update(String uuid){
-		//PanelUtil.changePanel(frame, new UpdatePanel(frame,uuid));
+		
 	}
 	
 	public void Delete(String uuid){
@@ -49,18 +46,18 @@ public class ListPanel extends JPanel {
 		PanelUtil.changePanel(frame, new QueryPanel(frame));
 	}
 	
-	public ListPanel(JFrame frame) {
+	public BookListPanel(JFrame frame) {
 		this.frame=frame;
 		this.init(list);
 	}
 	
-	public ListPanel(JFrame frame,List<UserModel> list) {
+	public BookListPanel(JFrame frame,List<BookModel> list) {
 		this.frame=frame;
 		this.list=list;
 		this.init(list);
 	}
 	
-	public void init(List<UserModel> dataList){
+	public void init(List<BookModel> dataList){
 		this.setSize(800, 600);
 		setLayout(null);
 		JLabel label = new JLabel("\u56FE\u4E66\u5217\u8868");
@@ -79,8 +76,8 @@ public class ListPanel extends JPanel {
 		JButton btnUpdate = new JButton("\u66F4\u65B0\u56FE\u4E66");
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserModel model=new UserModel();
-				model=(UserModel)jlist.getSelectedValue();
+				BookModel model=new BookModel();
+				model=(BookModel)jlist.getSelectedValue();
 				if(model!=null){
 					Update(model.getUuid());
 				}else{
@@ -109,8 +106,8 @@ public class ListPanel extends JPanel {
 		JButton btnDel = new JButton("\u5220   \u9664");
 		btnDel.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				UserModel model=new UserModel();
-				model=(UserModel)jlist.getSelectedValue();
+				BookModel model=new BookModel();
+				model=(BookModel)jlist.getSelectedValue();
 				if(model!=null){
 					Delete(model.getUuid());
 				}else{

@@ -18,7 +18,7 @@ import cn.javass.jxc.user.UserTypeEnum;
  * @author wushensi
  *
  */
-public class UserModel implements Serializable{
+public class BookModel implements Serializable{
 	/**
 	 * 
 	 */
@@ -42,7 +42,7 @@ public class UserModel implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		UserModel other = (UserModel) obj;
+		BookModel other = (BookModel) obj;
 		if (uuid == null) {
 			if (other.uuid != null)
 				return false;

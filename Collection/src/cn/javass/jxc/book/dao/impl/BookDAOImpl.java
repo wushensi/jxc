@@ -30,15 +30,12 @@ public class BookDAOImpl implements BookDAO {
 		// 1、想把已经有的读出出来
 		List<BookModel> list = SerialUtil.readFromFile(FILE_NAME);
 		System.out.println(book);
-		System.out.println("book uuid---------"+book.getUuid());
 		// 2、查看下uuid是否重复
 		for (BookModel model : list) {
 			if (model.getUuid().equals(book.getUuid())) {
-				
 				return false;
 			}
 		}
-
 		// 2.1若重复，返回false
 		// 2.2若不重复，则添加到usermode的list并返回true
 		list.add(book);
@@ -135,11 +132,13 @@ public class BookDAOImpl implements BookDAO {
 		//使用离散值enum枚举，对一个类 只限定生成特定几个的实例，重新实现uuid自动生产
 		uuid.setModelName(UuidEnum.BOOK_UUID.toString());
 		UuidDAO uuidDao=UuidDAOFactory.getUuidDAO();
-		book.setUuid(uuidDao.getNextNum(uuid.getModelName()));
-		book.setName("Thinking in java");
+		book.setUuid("BOOK_UUID");
+		book.setName("Effective Java");
 		book.setInPrice(110.01);
 		book.setSalePrice(213.2);
 		//System.out.println(dao.create(book));
+		//dao.update(book);
+		//dao.delete("BOOK_UUID");
 		System.out.println(dao.getByAll());
 		
 		//System.out.println("------"+userdao.getByCondition(query));

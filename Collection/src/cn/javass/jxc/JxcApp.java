@@ -5,7 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import cn.javass.jxc.user.panels.ListPanel;
+import cn.javass.jxc.book.panels.BookListPanel;
 
 /**
  * 在初始化jList时发现问题
@@ -50,7 +50,7 @@ public class JxcApp {
 		frame.setLayout(new BorderLayout());
 		frame.setSize(800, 600);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().add(new ListPanel(frame));
+		frame.getContentPane().add(new BookListPanel(frame));
 	}
 
 }

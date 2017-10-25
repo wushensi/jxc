@@ -15,7 +15,7 @@ import cn.javass.framework.panel.PanelUtil;
 import cn.javass.jxc.user.UserTypeEnum;
 import cn.javass.jxc.user.business.ebi.UserEbi;
 import cn.javass.jxc.user.business.factory.UserEbiFactory;
-import cn.javass.jxc.user.vo.UserModel;
+import cn.javass.jxc.user.vo.BookModel;
 
 public class DeletePanel extends JPanel {
 	
@@ -48,7 +48,7 @@ public class DeletePanel extends JPanel {
 	 * Back the ListPanel
 	 */
 	public void Back(){
-		PanelUtil.changePanel(jframe, new ListPanel(jframe));
+		PanelUtil.changePanel(jframe, new BookListPanel(jframe));
 	}
 	public void init(){
 		setLayout(null);
@@ -106,7 +106,7 @@ public class DeletePanel extends JPanel {
 		add(txtUuid);
 		
 		UserEbi userEbi=UserEbiFactory.getUserEbi();
-		UserModel model=userEbi.getByUuid(uuid);
+		BookModel model=userEbi.getByUuid(uuid);
 		
 		txtUuid.setText(model.getUuid());
 		txtUuid.setEditable(false);
