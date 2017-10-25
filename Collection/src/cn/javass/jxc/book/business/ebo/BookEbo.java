@@ -5,46 +5,47 @@ import java.util.Collection;
 import cn.javass.jxc.book.business.ebi.BookEbi;
 import cn.javass.jxc.book.dao.dao.BookDAO;
 import cn.javass.jxc.book.dao.factory.BookDAOFactory;
-import cn.javass.jxc.user.vo.UserModel;
-import cn.javass.jxc.user.vo.UserQueryModel;
+import cn.javass.jxc.book.vo.BookModel;
+import cn.javass.jxc.book.vo.BookQueryModel;
+
 
 public class BookEbo implements BookEbi {
 
 	private static BookDAO dao= BookDAOFactory.getBookDAO();
 	@Override
-	public boolean create(UserModel book) {
+	public boolean create(BookModel book) {
 		// TODO Auto-generated method stub
 		return dao.create(book);
 	}
 
 	@Override
-	public boolean update(UserModel book) {
+	public boolean update(BookModel book) {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.update(book);
 	}
 
 	@Override
 	public boolean delete(String uuid) {
 		// TODO Auto-generated method stub
-		return false;
+		return dao.delete(uuid);
 	}
 
 	@Override
-	public UserModel getByUuid(String uuid) {
+	public BookModel getByUuid(String uuid) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getByUuid(uuid);
 	}
 
 	@Override
-	public Collection<UserModel> getByAll() {
+	public Collection<BookModel> getByAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getByAll();
 	}
 
 	@Override
-	public Collection<UserModel> getByCondition(UserQueryModel book) {
+	public Collection<BookModel> getByCondition(BookQueryModel book) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getByCondition(book);
 	}
 
 }
