@@ -54,8 +54,8 @@ public class BookModel implements Serializable{
 
 	@Override
 	public String toString() {
-		return "BookModel [uuid=" + uuid + ", name=" + name + ", inPrice="
-				+ inPrice + ", salePrice=" + salePrice + "]";
+		return uuid + "," + name + ","
+				+ inPrice + "," + salePrice;
 	}
 
 	private static final long serialVersionUID = 1L;

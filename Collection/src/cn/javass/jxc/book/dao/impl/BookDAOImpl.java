@@ -1,5 +1,6 @@
 package cn.javass.jxc.book.dao.impl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -113,7 +114,41 @@ public class BookDAOImpl implements BookDAO {
 	public Collection<BookModel> getByCondition(BookQueryModel bookQueryModel) {
 		// TODO Auto-generated method stub
 		// 1、循环所有对象
-		
+		List<BookModel> list=SerialUtil.readFromFile(FILE_NAME);
+		List<BookModel> queryResult=new ArrayList<BookModel>();
+		for(BookModel model:list){
+			if(bookQueryModel.getUuid().equals(model.getUuid())||bookQueryModel.getName().equals(model.getName())){
+				System.out.println("1");
+				queryResult.add(model);
+			}
+			if(bookQueryModel.getInPriceLess()!=0 && (bookQueryModel.getInPriceLess()<=model.getInPrice() && model.getInPrice()<=bookQueryModel.getInPriceMore())){
+				System.out.println("2");
+				queryResult.add(model);
+			}
+			
+			if((bookQueryModel.getInPriceMore()!=0)&&bookQueryModel.getInPriceMore()<model.getInPrice()){
+				System.out.println("4");
+				queryResult.add(model);
+			}
+			
+			if(bookQueryModel.getInPriceLess()>model.getInPrice()){
+				System.out.println("3");
+				queryResult.add(model);
+			}
+			
+			if((bookQueryModel.getSalePriceLess()!=0)&&bookQueryModel.getSalePriceLess()<=model.getSalePrice() && model.getSalePrice()<=bookQueryModel.getSalePriceMore()){
+				System.out.println("5");
+				queryResult.add(model);
+			}
+			if(bookQueryModel.getSalePriceLess()>model.getSalePrice()){
+				System.out.println("6");
+				queryResult.add(model);
+			}
+			if((bookQueryModel.getSalePriceMore()!=0)&&bookQueryModel.getSalePriceMore()<model.getSalePrice()){
+				System.out.println("7");
+				queryResult.add(model);
+			}
+		}
 		// 2、把符合条件的model加入list
 		
 			// 正逻辑
@@ -121,7 +156,7 @@ public class BookDAOImpl implements BookDAO {
 			// 卫条件
 			// 内外层
 		// 3、返回list
-		return null;
+		return queryResult;
 	}
 
 	public static void main(String[] args) {

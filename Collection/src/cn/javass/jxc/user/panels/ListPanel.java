@@ -32,9 +32,6 @@ public class ListPanel extends JPanel {
 	}
 	
 	public void Add(){
-		/*frame.getContentPane().removeAll();
-		frame.getContentPane().add(new AddPanel(frame));
-		frame.getContentPane().validate();*/
 		PanelUtil.changePanel(frame, new AddPanel(frame));
 	}
 	
