@@ -2,7 +2,6 @@ package cn.javass.jxc.user.vo;
 
 import java.io.Serializable;
 
-import cn.javass.jxc.book.vo.BookModel;
 import cn.javass.jxc.user.UserTypeEnum;
 
 /**
