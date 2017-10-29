@@ -44,7 +44,7 @@ public class InMainEbo implements InMainEbi{
 	@Override
 	public Collection<InMain> getByCondition(InQueryMain inQueryMain) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getByCondition(inQueryMain);
 	}
 
 }

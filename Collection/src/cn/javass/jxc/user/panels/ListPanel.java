@@ -14,6 +14,7 @@ import javax.swing.JScrollPane;
 
 import cn.javass.framework.panel.PanelUtil;
 import cn.javass.jxc.book.panels.BookListPanel;
+import cn.javass.jxc.in.panels.InListPanel;
 import cn.javass.jxc.user.business.ebo.UserEbo;
 import cn.javass.jxc.user.business.factory.UserEbiFactory;
 import cn.javass.jxc.user.vo.UserModel;
@@ -132,17 +133,36 @@ public class ListPanel extends JPanel {
 		JButton btnBookComponent = new JButton("\u8F6C\u5230\u56FE\u4E66\u7BA1\u7406");
 		btnBookComponent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Book();
+				BookComponent();
 			}
 		});
 		btnBookComponent.setBounds(10, 232, 107, 23);
 		add(btnBookComponent);
 		
+		JButton btnInComponent = new JButton("\u8F6C\u5230\u8FDB\u8D27\u7BA1\u7406");
+		btnInComponent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InComponent();
+			}
+		});
+		btnInComponent.setBounds(137, 232, 107, 23);
+		add(btnInComponent);
+		
+		JButton btnInDetialConponent = new JButton("\u8F6C\u5230\u8FDB\u8D27\u660E\u7EC6\u7BA1\u7406");
+		btnInDetialConponent.setBounds(271, 232, 137, 23);
+		add(btnInDetialConponent);
+		
 	}
 	
-	public void Book(){
+	public void BookComponent(){
 		frame.getContentPane().removeAll();
 		frame.getContentPane().add(new BookListPanel(frame));
+		frame.getContentPane().validate();
+	}
+	
+	public void InComponent(){
+		frame.getContentPane().removeAll();
+		frame.getContentPane().add(new InListPanel(frame,null));
 		frame.getContentPane().validate();
 	}
 }

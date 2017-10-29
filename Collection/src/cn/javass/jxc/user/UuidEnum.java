@@ -6,5 +6,5 @@ package cn.javass.jxc.user;
  *
  */
 public enum UuidEnum {
-	USER_UUID,BOOK_UUID,STOCK_UUID,SALE_UUID;
+	USER_UUID,BOOK_UUID,IN_UUID,SALE_UUID;
 }

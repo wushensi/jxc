@@ -1,6 +1,8 @@
 package cn.javass.jxc.in.vo;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 关于值对象模式
@@ -71,8 +73,11 @@ public class InMain implements Serializable{
 	}
 	@Override
 	public String toString() {
+		SimpleDateFormat sdf=new SimpleDateFormat("YYYY-MM-dd");
+		Date date=new Date();
+		date.setTime(inDate);
 		return "InMain [id=" + id + ", inUserId=" + inUserId + ", inDate="
-				+ inDate + "]";
+				+ sdf.format(date) + "]";
 	}
 	
 	

@@ -2,6 +2,7 @@ package cn.javass.jxc.in.dao.impl;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 import cn.javass.framework.io.SerialUtil;
@@ -107,35 +108,52 @@ public class InMainDAOImpl implements InMainDAO {
 	}
 
 	@Override
-	public Collection<InMain> getByCondition(InQueryMain bookQueryModel) {
+	public Collection<InMain> getByCondition(InQueryMain inQueryMain) {
 		// TODO Auto-generated method stub
 		// 1、循环所有对象
 		List<InMain> list=SerialUtil.readFromFile(FILE_NAME);
 		List<InMain> queryResult=new ArrayList<InMain>();
 		for(InMain model:list){
-			
+			if(model.getId().equals(inQueryMain.getId())||model.getInUserId().equals(inQueryMain.getInUserId())){
+				queryResult.add(model);
+				System.out.println("1");
+			}
+			if(inQueryMain.getInDate()!=0&&inQueryMain.getInDate()<=model.getInDate() && model.getInDate()<=inQueryMain.getInQueryDate()){
+				queryResult.add(model);
+				System.out.println("2");
+			}
+			if(inQueryMain.getInDate()>model.getInDate()&&inQueryMain.getInQueryDate()==0){
+				queryResult.add(model);
+				System.out.println("3");
+			}
+			if(inQueryMain.getInDate()==0&&inQueryMain.getInQueryDate()<model.getInDate()){
+				queryResult.add(model);
+				System.out.println("4");
+			}
 		}
 		// 2、把符合条件的model加入list
-		
-			// 正逻辑
-			
-			// 卫条件
-			// 内外层
+		// 正逻辑
+		// 卫条件
+		// 内外层
 		// 3、返回list
 		return queryResult;
 	}
 
 	public static void main(String[] args) {
-		InMain inMain=new InMain();
-		inMain.setId("2");
-		inMain.setInDate(90000000);
-		inMain.setInUserId("3");
-		
+//		InMain inMain=new InMain();
+//		inMain.setId("2");
+//		inMain.setInDate(90000000);
+//		inMain.setInUserId("3");
+		InQueryMain query=new InQueryMain();
+		query.setId("1");
+		//query.setInUserId("5");
+		Date date=new Date();
+		//query.setInDate(0);
+		//query.setInQueryDate(date.getTime());
+		System.out.println(date.getTime());
 		InMainDAO dao=new InMainDAOImpl();
 		//System.out.println(dao.update(inMain));
-		System.out.println(dao.getByUuid("2"));
-		
-	
+		System.out.println(dao.getByCondition(query));
 	}
 
 }
