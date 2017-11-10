@@ -1,16 +1,34 @@
 package cn.javass.jxc.in.business.ebo;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import cn.javass.jxc.in.business.ebi.InDetailEbi;
+import cn.javass.jxc.in.business.ebi.InMainEbi;
+import cn.javass.jxc.in.business.factory.InDetailEbiFactory;
+import cn.javass.jxc.in.business.factory.InMainEbiFactory;
 import cn.javass.jxc.in.dao.dao.InDetailDAO;
 import cn.javass.jxc.in.dao.factory.InDetailDAOFactory;
 import cn.javass.jxc.in.vo.InDetail;
+import cn.javass.jxc.in.vo.InMain;
 import cn.javass.jxc.in.vo.InQueryDetail;
 
 public class InDetailEbo implements InDetailEbi{
 
-	private InDetailDAO dao=InDetailDAOFactory.getInDetailDAO();
+	private List <InDetail> inDetailList;
+	private InDetailDAO dao=InDetailDAOFactory.getInQueryDetailDAO(inDetailList);
+	
+	public InDetailEbo(){
+		
+	}
+	
+	public InDetailEbo(List <InDetail> inDetailList){
+		this.inDetailList=inDetailList;
+	}
+
 	@Override
 	public boolean create(InDetail inDetail) {
 		// TODO Auto-generated method stub
@@ -44,7 +62,9 @@ public class InDetailEbo implements InDetailEbi{
 	@Override
 	public Collection<InDetail> getByCondition(InQueryDetail inQueryDetail) {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.getByCondition(inQueryDetail);
 	}
+	
+	
 
 }

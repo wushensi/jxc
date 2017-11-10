@@ -64,4 +64,5 @@ public interface InDetailEbi {
 	 * @return
 	 */
 	public Collection<InDetail> getByCondition(InQueryDetail inQueryDetail);
+
 }

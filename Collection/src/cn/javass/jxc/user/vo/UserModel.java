@@ -1,6 +1,7 @@
 package cn.javass.jxc.user.vo;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
 import cn.javass.jxc.user.UserTypeEnum;
 
@@ -18,7 +19,7 @@ import cn.javass.jxc.user.UserTypeEnum;
  * @author wushensi
  *
  */
-public class UserModel implements Serializable{
+public class UserModel implements Serializable,Comparable<UserModel>{
 	/**
 	 * 
 	 */
@@ -82,4 +83,17 @@ public class UserModel implements Serializable{
 	}
 	private String uuid,name,pwd;
 	private int type;
+	
+	@Override
+	public int compareTo(UserModel o) {
+		// TODO Auto-generated method stub
+		if(Integer.parseInt(this.uuid)>Integer.parseInt(o.uuid)){
+			return 1;
+		}else if(Integer.parseInt(this.uuid)<Integer.parseInt(o.uuid)){
+			return -1;
+		}
+		return 0;
+		
+	}
+	
 }

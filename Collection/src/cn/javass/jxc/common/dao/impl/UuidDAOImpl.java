@@ -9,7 +9,7 @@ import cn.javass.jxc.user.UuidEnum;
 
 public class UuidDAOImpl implements UuidDAO{
 
-	private final static String USER_UUID = "USER_UUID.txt";
+	private static String USER_UUID = "USER_UUID.txt";
 	private int result=0;
 	@Override
 	/**
@@ -44,9 +44,14 @@ public class UuidDAOImpl implements UuidDAO{
 		return String.valueOf(result);
 	}
 	
+	public static String getUserUuid() {
+		return USER_UUID;
+	}
+
 	public static void main(String[] args){
 		UuidDAO dao=new UuidDAOImpl();
-		System.out.println(dao.getNextNum(UuidEnum.BOOK_UUID.toString()));
+		//System.out.println(dao.getNextNum(UuidEnum.BOOK_UUID.toString()));
+		System.out.println(dao.getNextNum(UuidEnum.IN_DETAIL_UUID.toString()));
 	}
 
 }

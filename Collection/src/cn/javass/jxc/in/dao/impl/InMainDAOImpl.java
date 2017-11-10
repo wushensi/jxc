@@ -1,5 +1,8 @@
 package cn.javass.jxc.in.dao.impl;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -28,7 +31,6 @@ public class InMainDAOImpl implements InMainDAO {
 		// TODO Auto-generated method stub
 		// 1、想把已经有的读出出来
 		List<InMain> list = SerialUtil.readFromFile(FILE_NAME);
-		System.out.println(inMain);
 		// 2、查看下uuid是否重复
 		for (InMain model : list) {
 			if (model.getId().equals(inMain.getId())) {
@@ -111,25 +113,56 @@ public class InMainDAOImpl implements InMainDAO {
 	public Collection<InMain> getByCondition(InQueryMain inQueryMain) {
 		// TODO Auto-generated method stub
 		// 1、循环所有对象
-		List<InMain> list=SerialUtil.readFromFile(FILE_NAME);
+		List<InMain> list=(List<InMain>) this.getByAll();
 		List<InMain> queryResult=new ArrayList<InMain>();
+		boolean flag_mainID,flag_UID,flag_MainUserID,flag_dateMin,flag_dateMax,flag_Min_Max,flag_Date_mainID,flag_Date_UID,flag_Date_MainUserID;
+		
+		
 		for(InMain model:list){
-			if(model.getId().equals(inQueryMain.getId())||model.getInUserId().equals(inQueryMain.getInUserId())){
+			flag_mainID=model.getId().equals(inQueryMain.getId())&&inQueryMain.getInUserId()==null&&inQueryMain.getInDate()==0&&inQueryMain.getInQueryDate()==0;
+			flag_UID=model.getInUserId().equals(inQueryMain.getInUserId())&&inQueryMain.getId()==null&&inQueryMain.getInDate()==0&&inQueryMain.getInQueryDate()==0;
+			flag_MainUserID=model.getId().equals(inQueryMain.getId())&&model.getInUserId().equals(inQueryMain.getInUserId())&&inQueryMain.getInDate()==0&&inQueryMain.getInQueryDate()==0;
+			flag_Min_Max=inQueryMain.getInDate()!=0&&inQueryMain.getInDate()<=model.getInDate() && model.getInDate()<=inQueryMain.getInQueryDate()&&inQueryMain.getId()==null&&inQueryMain.getInUserId()==null;
+			flag_dateMin=inQueryMain.getInQueryDate()==0&&inQueryMain.getInDate()>model.getInDate();
+			flag_dateMax=inQueryMain.getInDate()==0&&inQueryMain.getInQueryDate()<model.getInDate()&&inQueryMain.getInQueryDate()!=0;
+			flag_Date_mainID=model.getId().equals(inQueryMain.getId())&&inQueryMain.getInUserId()==null&&inQueryMain.getInDate()!=0&&inQueryMain.getInDate()<=model.getInDate() && model.getInDate()<=inQueryMain.getInQueryDate()&&inQueryMain.getInUserId()==null;
+			flag_Date_UID=inQueryMain.getInDate()!=0&&inQueryMain.getInDate()<=model.getInDate() && model.getInDate()<=inQueryMain.getInQueryDate()&&inQueryMain.getId()==null&&model.getInUserId().equals(inQueryMain.getInUserId());
+			flag_Date_MainUserID=model.getId().equals(inQueryMain.getId())&&model.getInUserId().equals(inQueryMain.getInUserId())&&inQueryMain.getInDate()<=model.getInDate() && model.getInDate()<=inQueryMain.getInQueryDate();
+			
+			if(flag_mainID){
 				queryResult.add(model);
-				System.out.println("1");
-			}
-			if(inQueryMain.getInDate()!=0&&inQueryMain.getInDate()<=model.getInDate() && model.getInDate()<=inQueryMain.getInQueryDate()){
+
+			}else if(flag_UID){
 				queryResult.add(model);
-				System.out.println("2");
-			}
-			if(inQueryMain.getInDate()>model.getInDate()&&inQueryMain.getInQueryDate()==0){
+
+			}else if(flag_MainUserID){
 				queryResult.add(model);
-				System.out.println("3");
+
 			}
-			if(inQueryMain.getInDate()==0&&inQueryMain.getInQueryDate()<model.getInDate()){
+			if(flag_Min_Max){
 				queryResult.add(model);
-				System.out.println("4");
+
 			}
+			if(flag_dateMin){
+				queryResult.add(model);
+
+			}
+			if(flag_dateMax){
+				queryResult.add(model);
+
+			}
+			if(flag_Date_mainID){
+				queryResult.add(model);
+
+			}
+			if(flag_Date_UID){
+				queryResult.add(model);
+
+			}
+			if(flag_Date_MainUserID){
+				queryResult.add(model);
+			}
+			
 		}
 		// 2、把符合条件的model加入list
 		// 正逻辑
@@ -138,22 +171,20 @@ public class InMainDAOImpl implements InMainDAO {
 		// 3、返回list
 		return queryResult;
 	}
+	
 
-	public static void main(String[] args) {
-//		InMain inMain=new InMain();
-//		inMain.setId("2");
-//		inMain.setInDate(90000000);
-//		inMain.setInUserId("3");
+	public static void main(String[] args) throws ParseException {
 		InQueryMain query=new InQueryMain();
-		query.setId("1");
-		//query.setInUserId("5");
-		Date date=new Date();
-		//query.setInDate(0);
-		//query.setInQueryDate(date.getTime());
-		System.out.println(date.getTime());
+		query.setId("4");
+		//query.setInUserId("1");
+		//SimpleDateFormat sdf =new  SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//Date dateMin = (Date) sdf.parse("2017-11-1 13:43:00");
+		//Date dateMax = (Date) sdf.parse("2017-11-10 13:43:00");
+		//query.setInDate(dateMin.getTime());
+		//query.setInQueryDate(dateMax.getTime());
 		InMainDAO dao=new InMainDAOImpl();
-		//System.out.println(dao.update(inMain));
 		System.out.println(dao.getByCondition(query));
+		
 	}
 
 }

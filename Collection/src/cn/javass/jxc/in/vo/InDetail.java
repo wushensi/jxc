@@ -27,7 +27,13 @@ public class InDetail implements Serializable{
 	}
 	private static final long serialVersionUID = 1L;
 	
-	private String id,inId,bookId;
+	private String id,inId,bookId,mainId;
+	public String getMainId() {
+		return mainId;
+	}
+	public void setMainId(String mainId) {
+		this.mainId = mainId;
+	}
 	private int sumNum;
 	private double sumMoney;
 	public String getId() {
@@ -86,7 +92,9 @@ public class InDetail implements Serializable{
 	@Override
 	public String toString() {
 		return "InDetail [id=" + id + ", inId=" + inId + ", bookId=" + bookId
-				+ ", sumNum=" + sumNum + ", sumMoney=" + sumMoney + "]";
+				+ ", mainId=" + mainId + ", sumNum=" + sumNum + ", sumMoney="
+				+ sumMoney + "]";
 	}
+	
 	
 }

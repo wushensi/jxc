@@ -1,7 +1,10 @@
 package cn.javass.jxc.in.business.ebi;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
+import cn.javass.jxc.in.vo.InDetail;
 import cn.javass.jxc.in.vo.InMain;
 import cn.javass.jxc.in.vo.InQueryMain;
 
@@ -18,6 +21,8 @@ public interface InMainEbi {
 	 */
 	
 	public boolean create(InMain inMain);
+	
+	public boolean create(InMain inMain,List<InDetail> list);
 
 	/**
 	 * 修改一个uuid，如果不存在，返回false
@@ -65,4 +70,8 @@ public interface InMainEbi {
 	 * @return
 	 */
 	public Collection<InMain> getByCondition(InQueryMain inQueryMain);
+
+	public abstract Map<InMain,List<InDetail>> getByMapAll();
+
+	public abstract boolean UpdateMainDetail(InMain inMain,Map<InMain,InDetail> updateMap);
 }

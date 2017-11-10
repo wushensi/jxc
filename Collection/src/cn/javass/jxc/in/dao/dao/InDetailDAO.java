@@ -1,6 +1,7 @@
 package cn.javass.jxc.in.dao.dao;
 
 import java.util.Collection;
+import java.util.List;
 
 import cn.javass.jxc.in.vo.InDetail;
 import cn.javass.jxc.in.vo.InQueryDetail;
@@ -66,4 +67,5 @@ public interface InDetailDAO {
 	 * @return
 	 */
 	public Collection<InDetail> getByCondition(InQueryDetail inQueryDetail);
+
 }

@@ -20,17 +20,17 @@ import java.io.Serializable;
  */
 public class InQueryDetail extends InDetail{
 	private int sumQueryNum;
-	private long sumQueryMoney;
+	private double sumQueryMoney;
 	public int getSumQueryNum() {
 		return sumQueryNum;
 	}
 	public void setSumQueryNum(int sumQueryNum) {
 		this.sumQueryNum = sumQueryNum;
 	}
-	public long getSumQueryMoney() {
+	public double getSumQueryMoney() {
 		return sumQueryMoney;
 	}
-	public void setSumQueryMoney(long sumQueryMoney) {
+	public void setSumQueryMoney(double sumQueryMoney) {
 		this.sumQueryMoney = sumQueryMoney;
 	}
 	
